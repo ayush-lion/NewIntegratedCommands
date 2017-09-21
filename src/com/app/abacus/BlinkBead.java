@@ -88,6 +88,5 @@ public class BlinkBead {
 				switchOver = !switchOver;
 			} 
 		}
-
 	}
 }

@@ -11,7 +11,7 @@ import java.awt.Image;
  * @author prashant.joshi (198joshi@gmail.com)
  * @version 10-Aug-2017
  */
-public class Bead { 
+public class Bead {
 
 	/* Holds long values */
 	private long beadValue;
@@ -40,15 +40,62 @@ public class Bead {
 	private boolean rightIndex;
 	private boolean rightThumb;
 	private boolean displayFingerImage;
+	private boolean displaylabels;
+	private int displayNumber = 1;
+	/**
+	 * @return the displayNumber
+	 */
+	public int getDisplayNumber() {
+		return displayNumber;
+	}
+
+	/**
+	 * @param displayNumber the displayNumber to set
+	 */
+	public void setDisplayNumber(int displayNumber) {
+		this.displayNumber = displayNumber;
+	}
+
+	/**
+	 * @return the displaylabels
+	 */
+	public boolean isDisplaylabels() {
+		return displaylabels;
+	}
+
+	/**
+	 * @param displaylabels the displaylabels to set
+	 */
+	public void setDisplaylabels(boolean displaylabels) {
+		this.displaylabels = displaylabels;
+	}
 
 	/**
 	 * Draw beads
 	 */
 	public void drawBead(Graphics g) {
 		if (isSwitchable()) {
-			g.drawImage(heavenImage, posX, hPosY, width, height, null);
+				if(isDisplaylabels())
+				{
+					g.drawImage(heavenImage, posX, hPosY, width, height, null);
+					g.drawString(""+getDisplayNumber(), posX+(width/2), hPosY+(width/2));
+
+				}
+				else
+				{
+					g.drawImage(heavenImage, posX, hPosY, width, height, null);
+					
+				}
 		} else {
-			g.drawImage(earthImage, posX, ePosY, width, height, null);
+			if(isDisplaylabels())
+			{
+				g.drawImage(earthImage, posX, ePosY, width, height, null);
+				g.drawString(""+getDisplayNumber(), posX+(width/2), ePosY+(width/2));
+			}
+			else
+			{
+				g.drawImage(earthImage, posX, ePosY, width, height, null);
+			}
 		}
 	}
 

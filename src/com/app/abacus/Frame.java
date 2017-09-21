@@ -4,6 +4,7 @@
 package com.app.abacus;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -35,11 +36,13 @@ public class Frame {
 		this.height = height;
 	}
 	
-	public void drawFrame(Graphics g) {
+	public void drawFrame(Graphics g) 
+	{
 		if(!isSwitchable()) {
 			g.drawImage(image, this.posX, this.posY, this.getWidth(), this.getHeight(), null);
 			if(number != null) {
 				g.setColor(Color.CYAN);
+				g.setFont(new Font("TimesRoman", Font.BOLD,20)); 
 				g.drawString("Count : " + number, this.getWidth() - 200, 10);
 			}
 		}
@@ -49,6 +52,7 @@ public class Frame {
 		if(!isSwitchable()) {
 			if(number != null) {
 				g.setColor(Color.CYAN);
+				g.setFont(new Font("TimesRoman", Font.BOLD,20)); 
 				g.drawString("Count : " + number, this.getWidth() - 200, 10);
 			}
 		}

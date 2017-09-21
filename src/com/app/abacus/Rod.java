@@ -40,7 +40,8 @@ public class Rod {
 		if(!isSwitchable())
 			g.drawImage(image, this.posX, this.posY, this.getWidth(), this.getHeight(), null);
 		
-		if(isDisplayNumbers()) {
+		   if(isDisplayNumbers()) {
+			
 			g.setColor(Color.CYAN);
 			g.drawString(String.valueOf(number), nPosX, nPosY);
 		}

@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
+import com.app.abacus.panel.AbacusPanel;
+
 /**
  * @author prashant.joshi (198joshi@gmail.com)
  * @version 10-Aug-2017
@@ -33,14 +35,22 @@ public class Beam {
 	
 	public void drawBeam(Graphics g) {
 		if(!isSwitchable())
-			g.drawImage(image, this.posX, this.posY, this.getWidth(), this.getHeight(), null);
+			g.drawImage(image, this.posX, this.posY + 10, this.getWidth(), this.getHeight(), null);
+		int counterX = 65;
+		for(int i=1; i < 25; i++) {
+			if(i % 3 == 0) {
+				g.setColor(Color.white);
+				g.fillOval(counterX, 80, 10, 10);
+			}
+			counterX += 50;
+		}
 	}
 	
 	public void highlight(Graphics g) {
 		g.setColor(Color.CYAN);
 		g.fillRect(posX, posY, width, height);
 	}
-	
+
 	/**
 	 * @return the posX
 	 */
@@ -115,5 +125,4 @@ public class Beam {
 	public void setSwitchable(boolean switchable) {
 		this.switchable = switchable;
 	}
-	
 }

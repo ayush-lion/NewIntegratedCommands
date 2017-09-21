@@ -50,17 +50,17 @@ public class TopicPanel extends JPanel {
 		Dimension d = this.getPreferredSize();
 		g.setFont(new Font(getFontName(), Font.BOLD, getFontSize()));
 		g.setColor(Color.black);
-		if(getAlign().equals("left"))
+		if(getAlign().equals("Left"))
 		{
 			g.drawString(getTopicName(), g.getClipBounds().x+5, g.getClipBounds().height/2);
 			g.drawLine(g.getClipBounds().x+5, g.getClipBounds().height/2+2, getTopicName().length()*10, g.getClipBounds().height/2+2);
 		}
-		else if(getAlign().equals("center"))
+		else if(getAlign().equalsIgnoreCase("Center"))
 		{
 			g.drawString(getTopicName(), g.getClipBounds().width/3, g.getClipBounds().height/2);
 			g.drawLine(g.getClipBounds().x+5 + g.getClipBounds().width/3,  g.getClipBounds().height/2+2, getTopicName().length()*22,  g.getClipBounds().height/2+2);
 		}
-		else if(getAlign().equals("right"))
+		else if(getAlign().equalsIgnoreCase("Right"))
 		{
 			g.drawString(getTopicName(), g.getClipBounds().width-getTopicName().length()*10, g.getClipBounds().height/2);
 			g.drawLine(g.getClipBounds().x+5 + g.getClipBounds().width/3 + getTopicName().length()*24,

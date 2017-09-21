@@ -3,6 +3,7 @@
  */
 package com.app.abacus.panel;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import com.app.abacus.Abacus;
+
 import com.app.abacus.Bead;
 import com.app.abacus.BlinkBead;
 import com.app.abacus.BlinkBeam;
@@ -28,6 +30,7 @@ import com.app.abacus.panel.exception.AbacusException;
 public class AbacusPanel extends JPanel {
 	
 	private static final long serialVersionUID = -2312019179090620771L;
+	private static final Color MARKER_COLOR = null;
 	private Abacus abacus;
 	private boolean doWeNeedToHighlightFrame = Boolean.FALSE;
 	private boolean doWeNeedToHighlightRods = Boolean.FALSE;
@@ -37,7 +40,7 @@ public class AbacusPanel extends JPanel {
 	private boolean doWeNeedToHighlightUpperBeads = Boolean.FALSE;
 	private boolean doWeNeedToHighlightSpecificBeads = Boolean.FALSE;
 	private boolean doWeNeedToHighlightDivider = Boolean.FALSE;
-	private boolean doWeNeedToDisplayCount = Boolean.FALSE;
+	private boolean doWeNeedToDisplayCount = Boolean.TRUE;
 	
 	private String abacusAttributesFileName = null;
 	private int rodNumber;
@@ -93,7 +96,6 @@ public class AbacusPanel extends JPanel {
 		} else {
 			abacus = new Abacus(this);
 		}
-		
 		this.repaint();
 	}
 	
@@ -559,7 +561,7 @@ public class AbacusPanel extends JPanel {
 		doWeNeedToHighlightSpecificBeads = Boolean.FALSE;
 		doWeNeedToHighlightSpecificRods = Boolean.FALSE;
 		doWeNeedToHighlightDivider = Boolean.FALSE;
-		doWeNeedToDisplayCount = Boolean.FALSE;
+		doWeNeedToDisplayCount = Boolean.TRUE;
 		if(bBlink != null) {
 			bBlink.stopBlink();
 			bBlink = null;
@@ -680,7 +682,6 @@ public class AbacusPanel extends JPanel {
 		displayCount = count;
 		this.repaint();
 	}
-	
 	/**
 	 * Method is responsible to display count on Abacus
 	 */
@@ -699,6 +700,8 @@ public class AbacusPanel extends JPanel {
 		if(doWeNeedToHighlightFrame) {
 			highlightFrame(g);
 		} 
+		
+		
 		
 		// High light Rods
 		if(doWeNeedToHighlightRods) {
@@ -739,7 +742,6 @@ public class AbacusPanel extends JPanel {
 		if(doWeNeedToDisplayCount) {
 			displayCount(g);
 		}
-		
 	}
 
 	/**
@@ -766,4 +768,60 @@ public class AbacusPanel extends JPanel {
 	public void setAbacusAttributesFileName(String abacusAttributesFileName) {
 		this.abacusAttributesFileName = abacusAttributesFileName;
 	}
+	
+	public void showBeadLabels()
+	{
+		Bead[][] beads = getAbacus().getBeads();
+		for(int row = 0; row < getAbacus().getNumOfRods(); row ++) {
+			for(int beadNum = 0; beadNum < 5; beadNum++) {
+				beads[row][beadNum].setDisplaylabels(true);
+			}
+		}
+		this.repaint();
+	}
+	
+	public void hideBeadLabels()
+	{
+		Bead[][] beads = getAbacus().getBeads();
+		for(int row = 0; row < getAbacus().getNumOfRods(); row ++) {
+			for(int beadNum = 0; beadNum < 5; beadNum++) {
+				beads[row][beadNum].setDisplaylabels(false);
+			}
+		}
+		this.repaint();
+	}
+	
+	public void hideUpperBeadsLabels()
+	{
+		for(int i = 0; i < getAbacus().getNumOfRods(); i++) {
+			getAbacus().getBeads()[i][4].setDisplaylabels(false);
+		}
+		this.repaint();
+	}
+	public void hideLoweBeadsLabels()
+	{
+		for(int i = 0; i < getAbacus().getNumOfRods(); i++) {
+			for(int j = 0; j < 4; j++) {
+				getAbacus().getBeads()[i][j].setDisplaylabels(false);
+			}
+		}
+		this.repaint();
+	}
+	
+	public void showUpperBeadsLabels()
+	{
+		for(int i = 0; i < getAbacus().getNumOfRods(); i++) {
+			getAbacus().getBeads()[i][4].setDisplaylabels(true);
+		}
+		this.repaint();
+	}
+	public void showLowerBeadsLabels()
+	{
+		for(int i = 0; i < getAbacus().getNumOfRods(); i++) {
+			for(int j = 0; j < 4; j++) {
+				getAbacus().getBeads()[i][j].setDisplaylabels(true);
+			}
+		}
+		this.repaint();
+	}	
 }

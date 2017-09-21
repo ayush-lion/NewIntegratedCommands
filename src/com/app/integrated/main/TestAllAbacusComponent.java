@@ -43,6 +43,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+
 import com.app.abacus.Finger;
 import com.app.abacus.Frame;
 import com.app.abacus.panel.AbacusPanel;
@@ -223,6 +224,7 @@ public class TestAllAbacusComponent extends JFrame {
 			panel.setNoOfrod(numofrod);
 			panel.setBounds(0, topicPanel.getHeight(), this.getWidth()*abacusWidth/100, this.getHeight()*abacusheight/100);
 			panel.initializeAbacus();
+			panel.displayCount("");
 			
 			setUpAbacusTopPanel();
 			
@@ -274,6 +276,7 @@ public class TestAllAbacusComponent extends JFrame {
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
 			this.add(instructionpanel, constraints);
+			
 			
 			//this.add(instructionpanel);
 			//this.revalidate();

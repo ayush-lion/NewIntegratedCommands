@@ -64,8 +64,6 @@ public class MainPanel extends JPanel {
 			ArrayList<String> temp = new ArrayList<String>();
 			temp.add("test");
 			cPanel = new CalloutsPanel(temp,"right","left","");
-			
-		
 		
 		//Add constraints
 		GridBagConstraints constraints = new GridBagConstraints(); 
